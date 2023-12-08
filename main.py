@@ -13,11 +13,10 @@ image = st.file_uploader('Choose an image', type=(['png', 'jpg', 'jpeg']))
 
 if image is not None:
   image = Image.open(image)
-  new_image = image.resize((64, 64))
   st.image(new_image, caption='Test image')
 
   if st.button('Predict'):
-    image = image.resize((227*227*3, 1))
+    image = image.resize((8*8, 1))
     vector = np.array(image)
     label = str((model.predict(vector))[0])
 
