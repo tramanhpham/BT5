@@ -13,7 +13,8 @@ image = st.file_uploader('Choose an image', type=(['png', 'jpg', 'jpeg']))
 
 if image is not None:
   image = Image.open(image)
-  st.image(image, caption='Test image')
+  new_image = image.resize((64, 64))
+  st.image(new_image, caption='Test image')
 
   if st.button('Predict'):
     image = image.resize((227*227*3, 1))
