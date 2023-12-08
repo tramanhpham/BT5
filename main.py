@@ -1,5 +1,5 @@
 import streamlit as st
-from PIL import Image
+from PIL import Image, ImageOps
 import pickle as pkl
 import numpy as np
 
@@ -17,6 +17,7 @@ if image is not None:
 
   if st.button('Predict'):
     image = image.resize((8*8, 1))
+    image = ImageOps.grayscale(image) 
     vector = np.array(image)
     label = str((model.predict(vector))[0])
 
